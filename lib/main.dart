@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fun_skb/screens/call_page.dart';
-import 'package:fun_skb/screens/camera_page.dart';
-import 'package:fun_skb/screens/chats_page.dart';
+import 'package:fun_skb/screens/video_page.dart';
+import 'package:fun_skb/screens/karaoke_page.dart';
+import 'package:fun_skb/screens/setting_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fun_skb/services/counter_bloc.dart';
 
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       // home: const MyHomePage(title: 'SKB Home Page'),
       home: BlocProvider(
         create: (context) => CounterBloc(),
-        child: const MyHomePage(title: 'SKB Home Page'),
+        child: const MyHomePage(title: 'Youtube Videos'),
       ),
     );
   }
@@ -44,9 +44,9 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
 
   static const List<Widget> _pages = <Widget>[
-    CallsPage(),
-    CameraPage(),
-    ChatsPage(),
+    VideoPage(),
+    KaraokePage(),
+    SettingPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -93,16 +93,16 @@ class _MyHomePageState extends State<MyHomePage> {
         // selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.call),
-            label: 'Calls',
+            icon: Icon(Icons.video_collection),
+            label: 'Videos',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.camera),
-            label: 'Camera',
+            icon: Icon(Icons.mic_outlined),
+            label: 'Karaoke',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: 'Chats',
+            icon: Icon(Icons.settings),
+            label: 'Settings',
           )
         ],
         currentIndex: _selectedIndex,
