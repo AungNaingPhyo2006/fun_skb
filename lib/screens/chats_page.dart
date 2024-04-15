@@ -13,45 +13,33 @@ class ChatsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Chat Bloc Counter'),
       ),
-      body: BlocBuilder<CounterBloc, CounterState>(
-        builder: (context, state) {
-          if (state is UpdatedState) {
-            return Center(
-              child: Column(
+      body: BlocBuilder<CounterBloc, CounterState>(builder: (context, state) {
+        return Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text(
+                'Count Me',
+                style: TextStyle(fontSize: 50),
+              ),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  const Text(
-                    'Chat Counter Value:',
-                    style: TextStyle(fontSize: 20),
+                  FloatingActionButton(
+                    onPressed: () => counterBloc.add(IncrementEvent()),
+                    child: const Icon(Icons.add),
                   ),
-                  Text(
-                    '${state.count}',
-                    style: const TextStyle(fontSize: 50),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      FloatingActionButton(
-                        onPressed: () => counterBloc.add(IncrementEvent()),
-                        child: const Icon(Icons.add),
-                      ),
-                      const SizedBox(width: 20),
-                      FloatingActionButton(
-                        onPressed: () => counterBloc.add(DecrementEvent()),
-                        child: const Icon(Icons.remove),
-                      ),
-                    ],
+                  const SizedBox(width: 20),
+                  FloatingActionButton(
+                    onPressed: () => counterBloc.add(DecrementEvent()),
+                    child: const Icon(Icons.remove),
                   ),
                 ],
               ),
-            );
-          } else {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
-      ),
+            ],
+          ),
+        );
+      }),
     );
   }
 }
